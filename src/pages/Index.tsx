@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Zap, MessageSquare, Brain, TrendingUp, Funnel } from 'lucide-react';
+import { Zap, MessageSquare, Brain, TrendingUp, Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Hero from '@/components/Hero';
 import ServiceCardNew from '@/components/ServiceCardNew';
@@ -86,7 +86,7 @@ const Index = () => {
     {
       title: "More Qualified Leads, Less Work",
       description: "Our AI systems find and qualify potential clients for your business, delivering a steady stream of prospects without the manual prospecting work.",
-      icon: Funnel,
+      icon: Filter,
       benefits: [
         "Automated outreach that sounds human",
         "Smart qualification to focus on high-value prospects",
