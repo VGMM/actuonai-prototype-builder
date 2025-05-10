@@ -4,9 +4,9 @@ import { supabase } from "@/integrations/supabase/client";
 export interface ConsultationRequest {
   name: string;
   email: string;
-  company: string;
+  company?: string; // Made optional with ?
   industry: string;
-  challenge: string;
+  ai_integration: string; // Changed from challenge to ai_integration
   date: Date;
   status: string;
 }
@@ -24,13 +24,13 @@ export const saveConsultationRequest = async (data: ConsultationRequest) => {
         {
           name: data.name,
           email: data.email,
-          company: data.company,
+          company: data.company || null, // Handle optional company field
           industry: data.industry,
-          challenge: data.challenge,
+          ai_integration: data.ai_integration, // Changed from challenge
           preferred_date: data.date.toISOString(),
           status: data.status
         },
-      ] as any); // Using type assertion to bypass type checking for demo purposes
+      ]);
 
     if (error) throw error;
     return { success: true };

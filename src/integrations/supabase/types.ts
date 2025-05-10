@@ -9,13 +9,51 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      consultation_requests: {
+        Row: {
+          ai_integration: string
+          company: string | null
+          created_at: string | null
+          email: string
+          id: string
+          industry: string
+          name: string
+          preferred_date: string
+          status: string
+        }
+        Insert: {
+          ai_integration: string
+          company?: string | null
+          created_at?: string | null
+          email: string
+          id?: string
+          industry: string
+          name: string
+          preferred_date: string
+          status?: string
+        }
+        Update: {
+          ai_integration?: string
+          company?: string | null
+          created_at?: string | null
+          email?: string
+          id?: string
+          industry?: string
+          name?: string
+          preferred_date?: string
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      create_consultation_table: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never

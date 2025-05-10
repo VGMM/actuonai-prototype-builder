@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useToast } from '@/components/ui/use-toast';
@@ -15,9 +16,9 @@ import { motion } from 'framer-motion';
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email address.' }),
-  company: z.string().min(1, { message: 'Company name is required.' }),
+  company: z.string().optional(), // Made company optional
   industry: z.string().min(1, { message: 'Please select your industry.' }),
-  challenge: z.string().min(10, { message: 'Please describe your challenge (minimum 10 characters).' }),
+  ai_integration: z.string().min(10, { message: 'Please describe your AI integration needs (minimum 10 characters).' }), // Changed from challenge
   date: z.date({ required_error: 'Please select a preferred date for your consultation.' }),
 });
 
@@ -33,7 +34,7 @@ const Consultation = () => {
       email: '',
       company: '',
       industry: '',
-      challenge: '',
+      ai_integration: '', // Changed from challenge
     },
   });
 
@@ -129,9 +130,9 @@ const Consultation = () => {
                   name="company"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Company</FormLabel>
+                      <FormLabel>Company (Optional)</FormLabel>
                       <FormControl>
-                        <Input placeholder="Company Name" {...field} />
+                        <Input placeholder="Company Name (Optional)" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -152,13 +153,13 @@ const Consultation = () => {
                 />
                 <FormField
                   control={form.control}
-                  name="challenge"
+                  name="ai_integration"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Challenge</FormLabel>
+                      <FormLabel>AI Integration Needs</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Describe your business challenge"
+                          placeholder="Describe how you'd like AI to be integrated in your business"
                           className="resize-none"
                           {...field}
                         />
@@ -177,6 +178,7 @@ const Consultation = () => {
                         <Input
                           type="date"
                           {...field}
+                          value={field.value instanceof Date ? field.value.toISOString().split('T')[0] : ''}
                           onChange={(e) => {
                             const selectedDate = new Date(e.target.value);
                             field.onChange(selectedDate);
