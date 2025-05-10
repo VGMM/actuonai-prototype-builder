@@ -4,9 +4,9 @@ import { supabase } from "@/integrations/supabase/client";
 export interface ConsultationRequest {
   name: string;
   email: string;
-  company?: string; // Made optional with ?
+  company?: string; // Optional field
   industry: string;
-  ai_integration: string; // Changed from challenge to ai_integration
+  ai_integration: string; // Previously "challenge"
   date: Date;
   status: string;
 }
@@ -26,7 +26,7 @@ export const saveConsultationRequest = async (data: ConsultationRequest) => {
           email: data.email,
           company: data.company || null, // Handle optional company field
           industry: data.industry,
-          ai_integration: data.ai_integration, // Changed from challenge
+          ai_integration: data.ai_integration, // Previously "challenge"
           preferred_date: data.date.toISOString(),
           status: data.status
         },

@@ -18,7 +18,7 @@ const formSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email address.' }),
   company: z.string().optional(), // Made company optional
   industry: z.string().min(1, { message: 'Please select your industry.' }),
-  ai_integration: z.string().min(10, { message: 'Please describe your AI integration needs (minimum 10 characters).' }), // Changed from challenge
+  ai_integration: z.string().min(10, { message: 'Please describe your AI integration needs (minimum 10 characters).' }),
   date: z.date({ required_error: 'Please select a preferred date for your consultation.' }),
 });
 
@@ -34,16 +34,21 @@ const Consultation = () => {
       email: '',
       company: '',
       industry: '',
-      ai_integration: '', // Changed from challenge
+      ai_integration: '',
     },
   });
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
-      // Add the status field to the request data
+      // Create the consultation data with all required fields explicitly typed
       const consultationData: ConsultationRequest = {
-        ...data,
-        status: 'pending' // Setting a default status
+        name: data.name,
+        email: data.email,
+        company: data.company,
+        industry: data.industry,
+        ai_integration: data.ai_integration,
+        date: data.date,
+        status: 'pending'
       };
       
       const result = await saveConsultationRequest(consultationData);
