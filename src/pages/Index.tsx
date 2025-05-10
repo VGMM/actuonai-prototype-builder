@@ -1,216 +1,194 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Activity, MessageSquare, Settings, BarChart, Calendar, Check } from 'lucide-react';
+import { Zap, MessageSquare, Brain, TrendingUp, Funnel } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import Hero from '@/components/Hero';
-import ServiceCard from '@/components/ServiceCard';
-import TestimonialCard from '@/components/TestimonialCard';
+import ServiceCardNew from '@/components/ServiceCardNew';
+import ImplementationTimeline from '@/components/ImplementationTimeline';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { motion } from 'framer-motion';
 
 const Index = () => {
   const benefits = [
     {
-      title: "Data-Driven Insights",
-      description: "Make informed decisions with real-time analytics and insights tailored to your business needs."
+      title: "Accelerated Decision Making",
+      description: "Reduce analysis time by up to 85% with automated data processing and real-time dashboards that highlight critical insights instantly.",
+      icon: "⚡️"
     },
     {
-      title: "Cost Efficiency",
-      description: "Reduce operational costs while increasing productivity through intelligent automation."
+      title: "Enhanced Accuracy",
+      description: "Achieve 99.8% data accuracy with AI-powered validation and anomaly detection that identifies and corrects inconsistencies automatically.",
+      icon: "🛡️"
     },
     {
-      title: "Scalable Solutions",
-      description: "Our solutions grow with your business, ensuring long-term value and adaptability."
+      title: "Cost Reduction",
+      description: "Lower operational costs by 30-50% by eliminating manual data processing and reducing the need for specialized data analysis personnel.",
+      icon: "💰"
     },
     {
-      title: "Expert Implementation",
-      description: "Benefit from our deep expertise in actuarial science, data analysis, and AI integration."
+      title: "Scalable Operations",
+      description: "Handle 10x the workload without adding staff by automating routine processes that previously required manual intervention.",
+      icon: "📈"
     }
   ];
-
-  const testimonials = [
+  
+  const services = [
     {
-      quote: "ActuonAI transformed our reporting process from a monthly headache into a real-time dashboard that our entire team can use. The ROI was evident within weeks.",
-      author: "Michael Roberts",
-      role: "CFO",
-      company: "FinTech Solutions"
+      title: "Automate Your Repetitive Work",
+      description: "We identify and automate the time-consuming tasks eating up your team's day, from data entry to report generation and client updates.",
+      icon: Zap,
+      benefits: [
+        "Free up 15+ hours of team time per week",
+        "Eliminate errors in routine processes",
+        "Scale operations without adding headcount"
+      ],
+      link: "/services",
+      accent: "from-cyan-400 to-blue-600"
     },
     {
-      quote: "We tried several automation tools before finding ActuonAI. Their approach is different - they actually understand our business needs and built solutions that work for us.",
-      author: "Jennifer Lee",
-      role: "Operations Director",
-      company: "Healthcare Partners"
+      title: "24/7 Client Communication",
+      description: "AI chatbots and voice systems that handle routine client questions, meeting scheduling, and updates, ensuring clients always get immediate responses.",
+      icon: MessageSquare,
+      benefits: [
+        "Never miss a client message",
+        "Immediate responses at any hour",
+        "Seamless handoff to humans when needed"
+      ],
+      link: "/services",
+      accent: "from-violet-400 to-violet-700"
     },
     {
-      quote: "The predictive analytics system ActuonAI built for us has dramatically improved our inventory management. Their team made complex AI technology accessible and practical.",
-      author: "Robert Williams",
-      role: "Supply Chain Manager",
-      company: "Global Manufacturing Ltd"
+      title: "Talk to Your Data, Get Instant Insights",
+      description: "We train powerful AI models like ChatGPT, Claude, and Gemini on your business data, creating custom assistants that deliver insights through simple conversations.",
+      icon: Brain,
+      benefits: [
+        "Ask questions in plain English and get immediate answers",
+        "Connect AI to your business documents, databases, and tools",
+        "Make informed decisions without waiting for reports"
+      ],
+      link: "/services",
+      accent: "from-green-400 to-emerald-600"
+    },
+    {
+      title: "See Business Outcomes Before They Happen",
+      description: "Custom machine learning models built on your specific business data that predict trends, identify opportunities, and forecast results with actuarial precision.",
+      icon: TrendingUp,
+      benefits: [
+        "Forecast campaign performance before launch",
+        "Predict resource needs and budget requirements",
+        "Identify high-value opportunities using historical patterns"
+      ],
+      link: "/services",
+      accent: "from-amber-400 to-orange-600"
+    },
+    {
+      title: "More Qualified Leads, Less Work",
+      description: "Our AI systems find and qualify potential clients for your business, delivering a steady stream of prospects without the manual prospecting work.",
+      icon: Funnel,
+      benefits: [
+        "Automated outreach that sounds human",
+        "Smart qualification to focus on high-value prospects",
+        "Consistent lead pipeline with minimal oversight"
+      ],
+      link: "/services",
+      accent: "from-pink-400 to-rose-600"
     }
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-[#121212] text-white">
       <Navbar />
 
       {/* Hero Section */}
       <Hero 
-        title="Business Intelligence, Automated"
-        subtitle="Transforming business operations with cutting-edge AI automation solutions that non-technical teams can easily use and understand"
+        title="Automate Your Business with AI"
+        subtitle="Supercharge your business with AI, integrating powerful LLMs like ChatGPT, Claude, and Gemini directly in your business workflows"
         ctaText="Book Free Consultation"
         ctaLink="/consultation"
       />
 
-      {/* What We Do Section */}
-      <section className="section bg-white">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="section-title">What We Do</h2>
-            <p className="section-subtitle">
-              ActuonAI delivers powerful automation solutions that transform your business intelligence operations,
-              helping you make better decisions faster and with greater confidence.
-            </p>
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="bg-gray-50 p-6 rounded-lg text-center">
-              <div className="inline-flex items-center justify-center rounded-full bg-electric/10 text-electric p-4 mb-4">
-                <BarChart size={32} />
-              </div>
-              <h3 className="text-xl font-semibold text-navy mb-2">Simplify Complex Data</h3>
-              <p className="text-gray-600">We turn your complex data into clear, actionable insights that anyone in your organization can understand.</p>
-            </div>
-            
-            <div className="bg-gray-50 p-6 rounded-lg text-center">
-              <div className="inline-flex items-center justify-center rounded-full bg-electric/10 text-electric p-4 mb-4">
-                <Settings size={32} />
-              </div>
-              <h3 className="text-xl font-semibold text-navy mb-2">Automate Workflows</h3>
-              <p className="text-gray-600">Free your team from repetitive tasks with intelligent automation systems that learn and improve over time.</p>
-            </div>
-            
-            <div className="bg-gray-50 p-6 rounded-lg text-center">
-              <div className="inline-flex items-center justify-center rounded-full bg-electric/10 text-electric p-4 mb-4">
-                <Calendar size={32} />
-              </div>
-              <h3 className="text-xl font-semibold text-navy mb-2">Drive Better Decisions</h3>
-              <p className="text-gray-600">Make confident business decisions based on accurate forecasts and real-time business intelligence.</p>
-            </div>
-          </div>
+      {/* Benefits Section */}
+      <section className="py-20 relative">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(62,146,204,0.08),transparent_60%)]"></div>
         </div>
-      </section>
 
-      {/* How It Works Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-navy mb-4">How We Make AI Accessible</h2>
-            <p className="text-xl text-gray-600">
-              We translate complex technology into practical business solutions
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div 
+            className="max-w-3xl mx-auto text-center mb-16"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-electric/90">Key Benefits</h2>
+            <p className="text-xl text-gray-300">
+              Our business intelligence solutions deliver measurable improvements across your organization.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              {/* Vertical timeline line */}
-              <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-electric/30"></div>
-              
-              {/* Steps */}
-              <div className="space-y-12">
-                <div className="relative">
-                  <div className="flex flex-col md:flex-row items-center">
-                    <div className="flex-1 md:pr-8 md:text-right order-2 md:order-1">
-                      <div className="bg-white p-6 rounded-lg shadow-md">
-                        <h3 className="text-xl font-semibold text-navy mb-2">Discovery</h3>
-                        <p className="text-gray-600">We start by understanding your business challenges and goals in a no-jargon conversation.</p>
-                      </div>
-                    </div>
-                    <div className="mx-auto md:mx-0 flex items-center justify-center w-8 h-8 rounded-full bg-electric text-white font-bold z-10 mb-4 md:mb-0">1</div>
-                    <div className="flex-1 md:pl-8 order-1 md:order-2"></div>
-                  </div>
-                </div>
-                
-                <div className="relative">
-                  <div className="flex flex-col md:flex-row items-center">
-                    <div className="flex-1 md:pr-8 md:text-right order-2 md:order-2"></div>
-                    <div className="mx-auto md:mx-0 flex items-center justify-center w-8 h-8 rounded-full bg-electric text-white font-bold z-10 mb-4 md:mb-0">2</div>
-                    <div className="flex-1 md:pl-8 order-1 md:order-1">
-                      <div className="bg-white p-6 rounded-lg shadow-md">
-                        <h3 className="text-xl font-semibold text-navy mb-2">Solution Design</h3>
-                        <p className="text-gray-600">We design a customized solution that addresses your specific needs, with clear metrics for success.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="relative">
-                  <div className="flex flex-col md:flex-row items-center">
-                    <div className="flex-1 md:pr-8 md:text-right order-2 md:order-1">
-                      <div className="bg-white p-6 rounded-lg shadow-md">
-                        <h3 className="text-xl font-semibold text-navy mb-2">Implementation</h3>
-                        <p className="text-gray-600">We build and implement your solution with a focus on user-friendly interfaces and seamless integration.</p>
-                      </div>
-                    </div>
-                    <div className="mx-auto md:mx-0 flex items-center justify-center w-8 h-8 rounded-full bg-electric text-white font-bold z-10 mb-4 md:mb-0">3</div>
-                    <div className="flex-1 md:pl-8 order-1 md:order-2"></div>
-                  </div>
-                </div>
-                
-                <div className="relative">
-                  <div className="flex flex-col md:flex-row items-center">
-                    <div className="flex-1 md:pr-8 md:text-right order-2 md:order-2"></div>
-                    <div className="mx-auto md:mx-0 flex items-center justify-center w-8 h-8 rounded-full bg-electric text-white font-bold z-10 mb-4 md:mb-0">4</div>
-                    <div className="flex-1 md:pl-8 order-1 md:order-1">
-                      <div className="bg-white p-6 rounded-lg shadow-md">
-                        <h3 className="text-xl font-semibold text-navy mb-2">Ongoing Support</h3>
-                        <p className="text-gray-600">We provide training, support, and continuous improvement to maximize the value of your solution.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            {benefits.map((benefit, index) => (
+              <motion.div
+                key={index}
+                className="bg-[#1a1f2c]/40 backdrop-blur-sm rounded-xl p-6 border border-white/5 shadow-xl"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ 
+                  y: -5,
+                  boxShadow: "0 25px 50px -12px rgba(62, 146, 204, 0.15)"
+                }}
+              >
+                <div className="text-4xl mb-4">{benefit.icon}</div>
+                <h3 className="text-xl font-bold text-white mb-3">{benefit.title}</h3>
+                <p className="text-gray-300">{benefit.description}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Services Preview Section */}
-      <section className="py-16 bg-white">
-        <div className="container">
-          <h2 className="text-3xl font-bold text-center text-navy mb-12">Our Services</h2>
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(62,146,204,0.05),transparent_70%)]"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div 
+            className="max-w-3xl mx-auto text-center mb-16"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-electric/90">Our Services</h2>
+            <p className="text-xl text-gray-300">
+              Practical AI solutions that solve real business problems
+            </p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <ServiceCard
-              title="Business Intelligence"
-              description="Turn your data into actionable insights with automated analytics and reporting."
-              icon={Activity}
-              link="/services"
-            />
-            <ServiceCard
-              title="Customer Engagement"
-              description="Connect with customers 24/7 using AI-powered communication systems."
-              icon={MessageSquare}
-              link="/services"
-            />
-            <ServiceCard
-              title="Process Optimization"
-              description="Eliminate repetitive tasks and streamline workflows with intelligent automation."
-              icon={Settings}
-              link="/services"
-            />
-            <ServiceCard
-              title="Predictive Analytics"
-              description="Forecast business trends with actuarial precision and data-driven models."
-              icon={BarChart}
-              link="/services"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <ServiceCardNew
+                key={index}
+                title={service.title}
+                description={service.description}
+                icon={service.icon}
+                benefits={service.benefits}
+                link={service.link}
+                colorAccent={service.accent}
+              />
+            ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-14">
             <Link to="/services">
-              <Button variant="outline" className="border-navy text-navy hover:bg-navy hover:text-white">
+              <Button variant="outline" className="border-electric text-electric hover:bg-electric hover:text-white">
                 View All Services
               </Button>
             </Link>
@@ -218,58 +196,98 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-navy mb-4">What Our Clients Say</h2>
-            <p className="text-xl text-gray-600">
-              Hear from businesses that have transformed their operations with ActuonAI
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard
-                key={index}
-                quote={testimonial.quote}
-                author={testimonial.author}
-                role={testimonial.role}
-                company={testimonial.company}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Implementation Timeline */}
+      <ImplementationTimeline />
 
       {/* Why Choose Us Section */}
-      <section className="section">
-        <div className="container">
-          <h2 className="text-3xl font-bold text-center text-navy mb-12">Why Choose ActuonAI</h2>
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(62,146,204,0.08),transparent_70%)]"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div 
+            className="max-w-3xl mx-auto text-center mb-16"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-electric/90">Why Choose ActuonAI</h2>
+            <p className="text-xl text-gray-300">
+              We bring technical precision to practical business solutions
+            </p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="border-none shadow-md hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="flex items-start">
-                    <div className="mr-4">
-                      <Check className="h-6 w-6 text-electric" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-navy mb-3">{benefit.title}</h3>
-                      <p className="text-gray-600">{benefit.description}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <motion.div 
+              className="bg-gradient-to-br from-[#1a1f2c]/80 to-[#1a1f2c]/40 backdrop-blur-sm rounded-xl p-8 border border-white/5 shadow-lg"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-2xl font-bold text-white mb-4">Actuarial Expertise + AI Innovation</h3>
+              <p className="text-gray-300 mb-4">
+                Founded by actuaries and data scientists, we bring mathematical precision to AI implementation, ensuring solutions that deliver measurable business results.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <span className="text-electric mr-2">•</span>
+                  <span className="text-gray-300">Deep expertise in statistical modeling and risk analysis</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-electric mr-2">•</span>
+                  <span className="text-gray-300">Practical business focus rather than theoretical AI</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-electric mr-2">•</span>
+                  <span className="text-gray-300">Solutions designed with ROI as the primary metric</span>
+                </li>
+              </ul>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-gradient-to-br from-[#1a1f2c]/80 to-[#1a1f2c]/40 backdrop-blur-sm rounded-xl p-8 border border-white/5 shadow-lg"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-2xl font-bold text-white mb-4">No-Code Implementation</h3>
+              <p className="text-gray-300 mb-4">
+                We handle all the technical complexity, delivering solutions your team can use immediately without becoming AI experts themselves.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <span className="text-electric mr-2">•</span>
+                  <span className="text-gray-300">User-friendly interfaces that require minimal training</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-electric mr-2">•</span>
+                  <span className="text-gray-300">Integration with tools your team already uses daily</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-electric mr-2">•</span>
+                  <span className="text-gray-300">Comprehensive support to ensure adoption and success</span>
+                </li>
+              </ul>
+            </motion.div>
           </div>
 
-          <div className="mt-12 text-center">
+          <motion.div 
+            className="mt-14 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             <Link to="/consultation">
-              <Button size="lg" className="bg-electric hover:bg-electric/90 text-white">Book Free Consultation</Button>
+              <Button size="lg" className="bg-gradient-to-r from-purple-600 to-electric hover:opacity-90 text-white">
+                Book Free Consultation
+              </Button>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
