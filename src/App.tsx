@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,7 +8,6 @@ import Services from "./pages/Services";
 import About from "./pages/About";
 import Consultation from "./pages/Consultation";
 import NotFound from "./pages/NotFound";
-import CustomCursor from "./components/CustomCursor";
 import ParticleBackground from "./components/ParticleBackground";
 
 const queryClient = new QueryClient();
@@ -19,9 +17,8 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      {/* Add our custom cursor effect (only on non-touch devices) */}
+      {/* Only keep the particle background effect */}
       <div className="hidden md:block">
-        <CustomCursor />
         <ParticleBackground />
       </div>
       <BrowserRouter>
