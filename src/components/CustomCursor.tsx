@@ -16,7 +16,7 @@ const CustomCursor = () => {
       const isClickable = 
         target.tagName.toLowerCase() === 'button' || 
         target.tagName.toLowerCase() === 'a' ||
-        target.onclick ||
+        target.onclick !== null ||  // Changed from direct assignment to a boolean check
         window.getComputedStyle(target).cursor === 'pointer';
       
       setIsPointer(isClickable);
