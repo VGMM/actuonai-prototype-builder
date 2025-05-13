@@ -1,10 +1,11 @@
 
 import React from 'react';
-import { Activity, MessageSquare, Settings, BarChart } from 'lucide-react';
+import { Activity, MessageSquare, Settings, BarChart, Brain } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { motion } from 'framer-motion';
 
 interface ServiceDetailProps {
   title: string;
@@ -15,38 +16,45 @@ interface ServiceDetailProps {
     title: string;
     description: string;
   };
+  colorAccent?: string;
 }
 
-const ServiceDetail: React.FC<ServiceDetailProps> = ({ title, icon, description, features, caseStudy }) => {
+const ServiceDetail: React.FC<ServiceDetailProps> = ({ title, icon, description, features, caseStudy, colorAccent = 'from-electric to-blue-600' }) => {
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden mb-10 animate-fade-in">
+    <motion.div 
+      className="bg-[#1a1f2c]/40 backdrop-blur-sm rounded-xl border border-white/5 shadow-xl overflow-hidden mb-10"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="p-8">
         <div className="flex items-start">
-          <div className="inline-flex items-center justify-center rounded-md bg-electric/10 text-electric p-3 mr-4">
+          <div className={`inline-flex items-center justify-center rounded-full bg-gradient-to-r ${colorAccent} text-white p-3 mr-4`}>
             {icon}
           </div>
           <div>
-            <h3 className="text-2xl font-bold text-navy mb-3">{title}</h3>
-            <p className="text-gray-600 mb-6">{description}</p>
+            <h3 className="text-2xl font-bold text-white mb-3">{title}</h3>
+            <p className="text-gray-300 mb-6">{description}</p>
             
-            <h4 className="text-lg font-semibold text-navy mb-3">Key Features:</h4>
+            <h4 className="text-lg font-semibold text-white mb-3">Key Features:</h4>
             <ul className="space-y-2 mb-6">
               {features.map((feature, index) => (
                 <li key={index} className="flex items-start">
                   <span className="text-electric mr-2">•</span>
-                  <span>{feature}</span>
+                  <span className="text-gray-300">{feature}</span>
                 </li>
               ))}
             </ul>
             
-            <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
-              <h4 className="text-lg font-semibold text-navy mb-2">Case Study: {caseStudy.title}</h4>
-              <p className="text-gray-600">{caseStudy.description}</p>
+            <div className="bg-[#121212]/50 p-4 rounded-lg border border-white/5">
+              <h4 className="text-lg font-semibold text-white mb-2">Case Study: {caseStudy.title}</h4>
+              <p className="text-gray-300">{caseStudy.description}</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -65,7 +73,8 @@ const Services = () => {
       caseStudy: {
         title: "Financial Services Firm",
         description: "Reduced reporting time by 85% while increasing data accuracy through automated intelligence gathering and analysis."
-      }
+      },
+      colorAccent: "from-cyan-400 to-blue-600"
     },
     {
       title: "Customer Engagement Systems",
@@ -80,7 +89,8 @@ const Services = () => {
       caseStudy: {
         title: "E-commerce Platform",
         description: "Increased customer satisfaction by 42% and reduced support costs by implementing AI-powered engagement systems."
-      }
+      },
+      colorAccent: "from-violet-400 to-violet-700"
     },
     {
       title: "Process Optimization",
@@ -95,7 +105,8 @@ const Services = () => {
       caseStudy: {
         title: "Healthcare Provider",
         description: "Automated administrative processes saving 1,200+ hours monthly while reducing errors by 95%."
-      }
+      },
+      colorAccent: "from-green-400 to-emerald-600"
     },
     {
       title: "Predictive Analytics",
@@ -110,12 +121,29 @@ const Services = () => {
       caseStudy: {
         title: "Manufacturing Company",
         description: "Improved inventory management accuracy by 37% through predictive demand forecasting, reducing costs and stockouts."
-      }
+      },
+      colorAccent: "from-amber-400 to-orange-600"
+    },
+    {
+      title: "AI Integration Solutions",
+      icon: <Brain size={28} />,
+      description: "Seamlessly integrate advanced AI models like ChatGPT, Claude, and Gemini into your workflows and business processes.",
+      features: [
+        "Custom AI assistants for your specific business data",
+        "Natural language interfaces for your tools and databases",
+        "Automated report generation and insights",
+        "Continuous learning from your organization's knowledge"
+      ],
+      caseStudy: {
+        title: "Legal Services Firm",
+        description: "Reduced research time by 70% by implementing AI assistants that could quickly analyze case law and precedents on demand."
+      },
+      colorAccent: "from-pink-400 to-rose-600"
     }
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#121212] text-white">
       <Navbar />
 
       {/* Hero Section */}
@@ -129,7 +157,7 @@ const Services = () => {
       </section>
 
       {/* Services Detail Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-[#121212]">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto">
             {services.map((service, index) => (
@@ -140,16 +168,17 @@ const Services = () => {
                 description={service.description}
                 features={service.features}
                 caseStudy={service.caseStudy}
+                colorAccent={service.colorAccent}
               />
             ))}
           </div>
 
           <div className="text-center mt-12">
-            <p className="text-xl text-gray-600 mb-6">
+            <p className="text-xl text-gray-300 mb-6">
               Ready to transform your business with intelligent automation?
             </p>
             <Link to="/consultation">
-              <Button size="lg" className="bg-electric hover:bg-electric/90">
+              <Button size="lg" className="bg-gradient-to-r from-purple-600 to-electric hover:opacity-90 text-white">
                 Book Your Free Consultation
               </Button>
             </Link>

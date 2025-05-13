@@ -18,7 +18,7 @@ const formSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email address.' }),
   company: z.string().optional(), // Made company optional
   industry: z.string().min(1, { message: 'Please select your industry.' }),
-  ai_integration: z.string().min(10, { message: 'Please describe your AI integration needs (minimum 10 characters).' }),
+  ai_integration: z.string().min(10, { message: 'Please briefly describe your AI needs (minimum 10 characters).' }),
   date: z.date({ required_error: 'Please select a preferred date for your consultation.' }),
 });
 
@@ -111,7 +111,7 @@ const Consultation = () => {
                     <FormItem>
                       <FormLabel>Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your Name" {...field} />
+                        <Input placeholder="Your Name" {...field} className="text-black" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -124,7 +124,7 @@ const Consultation = () => {
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your Email" type="email" {...field} />
+                        <Input placeholder="Your Email" type="email" {...field} className="text-black" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -137,7 +137,7 @@ const Consultation = () => {
                     <FormItem>
                       <FormLabel>Company (Optional)</FormLabel>
                       <FormControl>
-                        <Input placeholder="Company Name (Optional)" {...field} />
+                        <Input placeholder="Company Name (Optional)" {...field} className="text-black" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -150,7 +150,7 @@ const Consultation = () => {
                     <FormItem>
                       <FormLabel>Industry</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your Industry" {...field} />
+                        <Input placeholder="Your Industry" {...field} className="text-black" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -161,11 +161,11 @@ const Consultation = () => {
                   name="ai_integration"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>AI Integration Needs</FormLabel>
+                      <FormLabel>Briefly Describe Your AI Needs</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Describe how you'd like AI to be integrated in your business"
-                          className="resize-none"
+                          placeholder="Briefly describe how you'd like AI to help your business"
+                          className="resize-none text-black"
                           {...field}
                         />
                       </FormControl>
@@ -183,6 +183,7 @@ const Consultation = () => {
                         <Input
                           type="date"
                           {...field}
+                          className="text-black"
                           value={field.value instanceof Date ? field.value.toISOString().split('T')[0] : ''}
                           onChange={(e) => {
                             const selectedDate = new Date(e.target.value);
